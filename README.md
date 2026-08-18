@@ -2,7 +2,7 @@
 
 Standalone Flask/WhatsApp service for AMPD Surge. This repository contains the approved deployable application and product context only; it is not an OpenClaw agent transfer.
 
-The repository also includes a small local Loadout-compatible calculation API. It contains the approved calculation data and exposes `/api/calculate` on loopback, so Surge can run without calling the old public Loadout calculation endpoint.
+The repository also includes the Loadout data pack in `loadout_local/data/` and a local Loadout-compatible calculation API. The data pack is copied onto the AMPD VPS with the application and exposes approved reference data locally, so Surge can run without calling the old public Loadout calculation endpoint.
 
 ## Dependencies
 
@@ -37,6 +37,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now loadout-local
 sudo systemctl enable --now surge
 curl http://127.0.0.1:8020/healthz
+curl http://127.0.0.1:8020/api/data-manifest
 curl http://127.0.0.1:8010/healthz
 ```
 
@@ -58,6 +59,7 @@ The local Loadout API can be checked directly:
 ```bash
 curl -s http://127.0.0.1:8020/api/jarvis/loadout-knowledge
 curl -s http://127.0.0.1:8020/api/manufacturers
+curl -s http://127.0.0.1:8020/api/data-manifest
 curl -s -X POST http://127.0.0.1:8020/api/calculate \
   -H 'Content-Type: application/json' \
   -d '{"weeks":52,"hours":50,"fuel_price":1.79,"electricity_rate":0.25,"recharge_source":"gen","items":[{"name":"Tower Crane (Medium)","qty":2,"weeks":52,"kva":200,"peak_kw":56,"utilisation":10}]}'
@@ -84,4 +86,4 @@ Back up `/var/lib/surge` using AMPD's approved backup process. Never commit that
 6. Confirmation that the VPS can reach the Loadout and Deploy APIs.
 7. An AMPD owner for evidence approval, technical escalation and rate changes.
 
-The external Loadout and Deploy APIs remain optional dependencies after this change. The local Loadout service is the default calculation route; the bundled manufacturer data is also used by Surge as a fallback when Deploy is unavailable.
+The Loadout data and calculation service are now local to the AMPD VPS. The external Loadout and Deploy APIs are optional dependencies after this change; the bundled manufacturer data is also used by Surge as a fallback when Deploy is unavailable.

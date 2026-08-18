@@ -1,0 +1,30 @@
+[
+  {
+    "id": "ampd-200",
+    "name": "Ampd 200",
+    "capacity_kwh": 215.0,
+    "charge_rate_kw": 60.0,
+    "output_kw": 193.0,
+    "continuous_kva": 214.0,
+    "peak_kva": 297.0,
+    "peak_kw": 292.0,
+    "input_voltage": 400,
+    "can_parallel": true,
+    "max_parallel": 4,
+    "price_per_week": 0
+  },
+  {
+    "id": "ampd-400",
+    "name": "Ampd 400",
+    "capacity_kwh": 430.0,
+    "charge_rate_kw": 90.0,
+    "output_kw": 386.0,
+    "continuous_kva": 428.0,
+    "peak_kva": 595.0,
+    "peak_kw": 585.0,
+    "input_voltage": 400,
+    "can_parallel": true,
+    "max_parallel": 4,
+    "price_per_week": 0
+  }
+]

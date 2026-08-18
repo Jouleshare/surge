@@ -1,0 +1,140 @@
+{
+  "_manufacturer": "Select Plant Hire",
+  "_contact": "enquiries@selectplanthire.com",
+  "_source": "Select Plant Hire Crane Fleet Brochure",
+  "_note": "Calculated based on manufacturer rated kVA or motor power.",
+  "_peak_kw_basis": "rated_kva x 0.66 (BS 7671 demand factor)",
+  "_util_rate": "10% (avg_kw = peak_kw x 0.10)",
+  "saddle_cranes": [
+    {
+      "model": "Liebherr 160 EC-B",
+      "peak_kw": 66.0,
+      "avg_kw": 6.6,
+      "rated_kva": 100,
+      "starting_current_a": 239,
+      "running_current_a": 144,
+      "min_gen_kva_raw": 200,
+      "gen_size_kva": 200,
+      "gen_fuel_lph": 16.0,
+      "start_method": "Freq Soft Start",
+      "_peak_basis": "rated_kva(100) x 0.66 (BS 7671 demand factor)"
+    },
+    {
+      "model": "Liebherr 280 EC-H",
+      "peak_kw": 99.0,
+      "avg_kw": 9.9,
+      "rated_kva": 150,
+      "starting_current_a": 359,
+      "running_current_a": 216,
+      "min_gen_kva_raw": 300,
+      "gen_size_kva": 300,
+      "gen_fuel_lph": 24.0,
+      "start_method": "Freq Soft Start",
+      "_peak_basis": "rated_kva(150) x 0.66 (BS 7671 demand factor)"
+    },
+    {
+      "model": "Terex CTT 162",
+      "peak_kw": 56.1,
+      "avg_kw": 5.6,
+      "rated_kva": 85,
+      "starting_current_a": 203,
+      "running_current_a": 122,
+      "min_gen_kva_raw": 170,
+      "gen_size_kva": 200,
+      "gen_fuel_lph": 16.0,
+      "start_method": "Freq Soft Start",
+      "_peak_basis": "rated_kva(85) x 0.66 (BS 7671 demand factor)"
+    },
+    {
+      "model": "Terex CTT 211",
+      "peak_kw": 66.0,
+      "avg_kw": 6.6,
+      "rated_kva": 100,
+      "starting_current_a": 239,
+      "running_current_a": 144,
+      "min_gen_kva_raw": 200,
+      "gen_size_kva": 200,
+      "gen_fuel_lph": 16.0,
+      "start_method": "Freq Soft Start",
+      "_peak_basis": "rated_kva(100) x 0.66 (BS 7671 demand factor)"
+    }
+  ],
+  "luffing_cranes": [
+    {
+      "model": "Liebherr 357 HC-L",
+      "peak_kw": 118.8,
+      "avg_kw": 11.9,
+      "rated_kva": 180,
+      "starting_current_a": 430,
+      "running_current_a": 259,
+      "min_gen_kva_raw": 360,
+      "gen_size_kva": 400,
+      "gen_fuel_lph": 32.0,
+      "start_method": "Freq Soft Start",
+      "_peak_basis": "rated_kva(180) x 0.66 (BS 7671 demand factor)"
+    },
+    {
+      "model": "Terex CTL 180",
+      "peak_kw": 95.7,
+      "avg_kw": 9.6,
+      "rated_kva": 145,
+      "starting_current_a": 347,
+      "running_current_a": 209,
+      "min_gen_kva_raw": 290,
+      "gen_size_kva": 300,
+      "gen_fuel_lph": 24.0,
+      "start_method": "Freq Soft Start",
+      "_peak_basis": "rated_kva(145) x 0.66 (BS 7671 demand factor)"
+    },
+    {
+      "model": "Terex CTL 140-10",
+      "peak_kw": 62.4,
+      "avg_kw": 6.2,
+      "rated_kva": 104,
+      "starting_current_a": 182,
+      "running_current_a": 160,
+      "isolator_size_a": 200,
+      "min_gen_kva_raw": 156,
+      "gen_size_kva": 160,
+      "gen_fuel_lph": 12.8,
+      "start_method": "Frequency Controlled",
+      "power_supply": "3 Ph 400V 50Hz",
+      "_source": "Wes Rayner/JJR Hatigan attachment: CTL 140-10 electrical requirements TE-004 b.pdf",
+      "_peak_basis": "rated_kva(104) x 0.8 PF x 0.75 motor diversity"
+    }
+  ],
+  "hoists": [
+    {
+      "model": "Brogan NOV2032 Passenger / Goods Hoist",
+      "peak_kw": 120.0,
+      "avg_kw": 36.0,
+      "rated_kva": 150,
+      "starting_current_a": 250,
+      "running_current_a": null,
+      "fuse_size_a": 90,
+      "payload_kg": 2000,
+      "speed_m_per_min": 35,
+      "power_supply": "3 Ph 400V 50Hz",
+      "gen_size_kva": 150,
+      "start_method": "Not specified",
+      "_source": "Wes Rayner/JJR Hatigan attachment: PASSENGER_GOODS_HOIST_-_NOV2032 (2).pdf",
+      "_note": "Power supply stated for each hoist cage; treat 150kVA as nameplate/supply requirement, not continuous demand."
+    }
+  ],
+  "silos": [
+    {
+      "model": "Cemex Dry Mortar Silo",
+      "peak_kw": 7.4,
+      "avg_kw": 1.5,
+      "rated_kva": 7.4,
+      "supply_current_a": 32,
+      "fallback_mcb_a": 40,
+      "power_supply": "230V single phase",
+      "capacity_tonnes": 33,
+      "power_cable_m": 5,
+      "water_feed_requirement": "Dedicated water supply to base of silo",
+      "_source": "Wes Rayner/JJR Hatigan attachment: Cemex Mortar Brochure 2024.pdf",
+      "_note": "Brochure states 230V single-phase supply from 32A motor-rated MCB, or 40A if not motor-rated, dedicated to the silo."
+    }
+  ]
+}

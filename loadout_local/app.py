@@ -14,8 +14,8 @@ from pathlib import Path
 from flask import Flask, jsonify, request
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA_DIR = Path(os.environ.get("SURGE_DATA_DIR", ROOT / "data"))
-CONFIG_PATH = Path(__file__).with_name("data") / "equipment_config.json"
+DATA_DIR = Path(os.environ.get("LOADOUT_DATA_DIR", Path(__file__).with_name("data")))
+CONFIG_PATH = DATA_DIR / "equipment_config.json"
 KNOWLEDGE_PATH = DATA_DIR / "loadout_knowledge.json"
 MANUFACTURER_DIR = DATA_DIR / "manufacturers"
 
@@ -27,10 +27,18 @@ EQUIPMENT_SPECS = _config.get("equipment_specs", {})
 DEMAND_FACTORS = _config.get("demand_factors", {"Tower Crane": 0.28, "Crane": 0.28, "Hoist": 0.80})
 UTIL_RATES = _config.get("util_rates", {"Tower Crane": 0.10, "Crane": 0.10, "Hoist": 0.30})
 
-GEN_RENTAL_PRICES = {20: 105, 24: 330, 30: 350, 40: 375, 45: 435, 60: 142, 100: 190, 160: 503, 200: 568, 300: 743, 500: 716}
+with (DATA_DIR / "generator_rates.json").open(encoding="utf-8") as handle:
+    _rate_data = json.load(handle)
+GEN_RENTAL_PRICES = {int(k): float(v) for k, v in _rate_data["weekly_hire_rates"].items()}
+with (DATA_DIR / "bess_units.json").open(encoding="utf-8") as handle:
+    _bess_rows = json.load(handle)
 AMPD_UNITS = {
-    "Ampd 200": {"continuous_kva": 214, "peak_kva": 297, "continuous_kw": 193, "peak_kw": 292, "input_kw": 60, "capacity_kwh": 200},
-    "Ampd 400": {"continuous_kva": 428, "peak_kva": 595, "continuous_kw": 386, "peak_kw": 585, "input_kw": 90, "capacity_kwh": 400},
+    row["name"]: {
+        "continuous_kva": row["continuous_kva"], "peak_kva": row["peak_kva"],
+        "continuous_kw": row["output_kw"], "peak_kw": row["peak_kw"],
+        "input_kw": row["charge_rate_kw"], "capacity_kwh": row["capacity_kwh"],
+    }
+    for row in _bess_rows
 }
 AMPD_RATES = {"Ampd 200": 1200, "Ampd 400": 2000}
 RECHARGE_GENS = {
@@ -212,6 +220,15 @@ def loadout_knowledge():
 @app.get("/api/manufacturers")
 def manufacturers():
     return jsonify(manufacturer_data())
+
+
+@app.get("/api/data-manifest")
+def data_manifest():
+    return jsonify({
+        "data_dir": str(DATA_DIR),
+        "files": sorted(path.name for path in DATA_DIR.iterdir() if path.is_file()),
+        "manufacturer_files": sorted(path.name for path in MANUFACTURER_DIR.glob("*.json")),
+    })
 
 
 @app.post("/api/calculate")
