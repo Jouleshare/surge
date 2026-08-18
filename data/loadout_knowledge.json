@@ -1,0 +1,94 @@
+{
+  "version": "2026-05-05",
+  "purpose": "Jarvis-readable Loadout assumptions for quick AMPD site-power reasoning without opening the UI.",
+  "bess_units": {
+    "Ampd 200": {
+      "input_kw": 60,
+      "continuous_kw": 193,
+      "continuous_kva": 214,
+      "peak_kw": 292,
+      "peak_kva": 297,
+      "capacity_kwh": 200,
+      "typical_use": "Single crane feed, constrained-grid buffer, or hybrid generator runtime reduction where measured peak and charge source fit."
+    },
+    "Ampd 400": {
+      "input_kw": 90,
+      "continuous_kw": 386,
+      "continuous_kva": 428,
+      "peak_kw": 585,
+      "peak_kva": 595,
+      "capacity_kwh": 400,
+      "typical_use": "Larger crane clusters, higher peak sites, or where Ampd 200 margin is too tight."
+    },
+    "2x Ampd 200": {
+      "input_kw": 120,
+      "continuous_kw": 386,
+      "continuous_kva": 428,
+      "peak_kw": 584,
+      "peak_kva": 594,
+      "capacity_kwh": 400,
+      "typical_use": "Parallel Ampd 200 option where one unit is too small but modular deployment is preferred."
+    }
+  },
+  "crane_generator_kva_to_peak_kw": {
+    "100": 27,
+    "125": 36,
+    "150": 44,
+    "200": 57,
+    "250": 66,
+    "300": 87,
+    "400": 92,
+    "500": 117,
+    "600": 138
+  },
+  "real_crane_dataset": {
+    "source_note": "31-day tower crane dataset previously analysed in Loadout; use as a practical utilisation sanity check, not a guarantee for every crane.",
+    "rows": 44640,
+    "peak_1min_kw": 117.1,
+    "peak_1sec_kw": 132,
+    "mean_all_time_kw": 7.3,
+    "mean_active_kw": 12,
+    "active_time_pct": 60,
+    "load_distribution_pct": {
+      "0kw": 39.7,
+      "0_to_10kw": 49.2,
+      "10_to_30kw": 3.6,
+      "30_to_60kw": 1.6,
+      "60_to_100kw": 4.4,
+      "100kw_plus": 1.4
+    }
+  },
+  "mains_connections_tpn": {
+    "63A": { "approx_kw": 35, "approx_kva": 43 },
+    "100A": { "approx_kw": 55, "approx_kva": 69 },
+    "125A": { "approx_kw": 69, "approx_kva": 86 },
+    "160A": { "approx_kw": 89, "approx_kva": 110 },
+    "200A": { "approx_kw": 111, "approx_kva": 138 },
+    "315A": { "approx_kw": 174, "approx_kva": 218 },
+    "400A": { "approx_kw": 221, "approx_kva": 277 }
+  },
+  "default_assumptions": {
+    "crane_utilisation_pct_for_avg": 10,
+    "power_factor": 0.9,
+    "diesel_co2_kg_per_litre": 2.68,
+    "ampd_200_trial_duration_weeks": 4,
+    "trial_positioning": "Prove real-world operation and site-team usability first; do not promise like-for-like generator replacement without electrical drawings and measured load profile."
+  },
+  "decision_rules": [
+    "A generator kVA recommendation is not continuous crane draw; it normally includes start/transient margin.",
+    "Treat manufacturer electrical requirements as authoritative until drawings and real load data confirm otherwise.",
+    "For a first Ampd 200 discussion, prefer one crane feed or local distribution point rather than a whole multi-crane site.",
+    "If estimated peak exceeds Ampd continuous output but remains below peak output, frame as trial/monitoring with caution, not guaranteed standalone operation.",
+    "If estimated peak exceeds Ampd peak output, recommend Ampd 400, parallel units, or hybrid generator support.",
+    "Always confirm charging source, individual vs grouped feeds, cable route, protection requirements, and whether loads are crane-only or mixed."
+  ],
+  "standard_questions": [
+    "What crane make/model and electrical annex/drawings are available?",
+    "What generator size or temporary grid supply is planned/installed?",
+    "Is each crane individually fed or grouped through site distribution?",
+    "What charging source is available for the BESS: grid, generator, or both?",
+    "Where could the unit physically sit, and what are the cable routes/access constraints?",
+    "Is the trial crane-only, or crane plus local hoists/welfare/tools?",
+    "Are there noise, emissions, hospital, residential, fire, or permit constraints?"
+  ]
+}

@@ -1,0 +1,136 @@
+Subject: Surge now vs standalone platform direction
+
+Tom,
+
+Here is the clean version of where Surge is now, and what it could become if widened into its own standalone platform.
+
+Current Surge capability
+
+Surge today is best described as an AMPD sales-engineering assistant. It is not just a generic chatbot; it already has a focused temporary-power workflow.
+
+What it can do now:
+
+- Screen plant/load scenarios for Ampd suitability.
+- Compare diesel generator baseline vs Ampd options.
+- Handle Ampd 200 / Ampd 400 recommendations.
+- Ask sensible missing-data questions when quantity, load, duration or recharge source is unclear.
+- Use mains vs generator recharge assumptions.
+- Produce quick commercial comparisons: cost, saving, CO2, diesel/fuel impact.
+- Explain assumptions in customer-friendly language.
+- Use manufacturer/spec data and field evidence where available.
+- Keep answers lightweight for sales conversations.
+- Generate saved job references and maintain conversation context.
+- Produce proposal-style outputs/artifacts when given structured inputs.
+- Support demo/customer-style flows through the live Surge interface.
+
+Recent improvement deployed tonight:
+
+If someone gives clear plant/load but misses duration or recharge source, Surge now gives a first-pass screen rather than stalling. For example, “X2 tower cranes 160 KVA” now returns an immediate recommendation using 52 weeks and generator recharge as explicit assumptions, then asks for the real duration/recharge source if the user wants it rerun.
+
+That makes Surge better for executive demos: useful first, caveated properly after.
+
+Current best use cases
+
+- Quick AMPD feasibility screening.
+- Generator displacement conversations.
+- Early-stage customer qualification.
+- Sales-engineering support for tower cranes, hoists, welfare/site loads etc.
+- Partner/commercial framing where the input assumptions are already known.
+- Turning messy site questions into a defensible first-pass answer.
+
+Where Surge should not yet be oversold
+
+Surge can reason well, but it is not yet a full project-assessment platform. For large jobs like Dublin / St Vincent’s, the deeper work still needs structured project context:
+
+- programme dates
+- drawings/block mapping
+- confirmed vs TBC assumptions
+- crane pairing logic
+- supply-zone split
+- rental-window maths
+- proposal narrative
+
+Surge can present and calculate from those assumptions, but the current product does not yet fully ingest and structure a whole project from raw documents on its own.
+
+Standalone Surge platform opportunity
+
+The bigger product is not “Surge the chatbot”.
+
+The sellable product is:
+
+Surge: an agent platform for temporary-power assessment, deployment planning and proposal generation.
+
+That could include:
+
+1. Project workspace
+- Customer/project records.
+- Uploaded drawings, schedules and programmes.
+- Plant list and load assumptions.
+- Confirmed vs TBC assumption tracking.
+- Saved assessments and versions.
+
+2. Evidence layer
+- Manufacturer data.
+- Customer-supplied inputs.
+- Field evidence.
+- Live telemetry proof.
+- Assumption-led screening clearly labelled.
+
+3. Assessment engine
+- Ampd unit sizing.
+- Generator baseline sizing.
+- Mains vs generator recharge.
+- Peak/average load assumptions.
+- Deployment options.
+- Risk and missing-data questions.
+
+4. Commercial engine
+- Hire vs purchase.
+- Rental return and payback.
+- Diesel saving.
+- CO2 saving.
+- Partner/channel economics, e.g. GH Generators.
+
+5. Proposal engine
+- Customer-ready PDF packs.
+- Email drafts.
+- Partner packs.
+- Assumption sheets.
+- Technical/commercial summaries.
+
+6. Monitoring intelligence
+- Northern Site style live checker outputs.
+- Alert history.
+- SOC/load/runtime evidence.
+- Fleet behaviour statistics.
+- Real-world proof for future proposals.
+
+Why this matters commercially
+
+AMPD’s sales and partner process still depends on scattered knowledge: load assumptions, generator baselines, field evidence, site nuance, commercial judgement and proposal writing. Surge can turn that into a repeatable workflow.
+
+The CEO-level story is:
+
+“Surge started as a sales-engineering assistant. The larger opportunity is a productised platform that turns messy site power inputs into Ampd-ready deployment proposals, evidence-backed commercial cases, and live operating intelligence.”
+
+That is a proper sellable product because it sits close to revenue:
+
+- faster qualification
+- better proposals
+- less technical bottleneck
+- repeatable partner/channel cases
+- stronger use of live telemetry
+- better customer confidence
+- field evidence reused rather than forgotten
+
+Suggested framing for tomorrow
+
+Do not position all of this as already built.
+
+Position it like this:
+
+“Surge today is the focused AMPD sales-engineering assistant. It can screen jobs, compare diesel vs Ampd, and support proposal conversations. The bigger opportunity is to widen it into a standalone platform for project assessment, proposal generation and evidence-backed deployment planning.”
+
+That keeps the demo honest while giving Anthony a much bigger product vision.
+
+Jarvis

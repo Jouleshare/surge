@@ -1,0 +1,232 @@
+{
+  "UK": {
+    "currency": "£",
+    "currency_code": "GBP",
+    "fuel_price": 1.7919,
+    "fuel_price_display": "£1.79/L",
+    "grid_upgrade_cost_per_kw": 1000,
+    "bess_rates": {
+      "Ampd 200": 1200,
+      "Ampd 400": 2000
+    },
+    "gen_rates": {
+      "60": 142,
+      "100": 190,
+      "160": 503,
+      "200": 568,
+      "300": 743,
+      "500": 716
+    },
+    "electricity_rate": 0.2399,
+    "electricity_rate_display": "£0.24/kWh DESNZ non-domestic average incl CCL",
+    "electricity_benchmarks": {
+      "source": "https://www.gov.uk/government/statistical-data-sets/gas-and-electricity-prices-in-the-non-domestic-sector",
+      "source_table": "QEP 3.4.2, table_341__1_.xlsx",
+      "source_name": "DESNZ non-domestic electricity prices including Climate Change Levy",
+      "source_type": "official_government_non_domestic_benchmark",
+      "published_date": "2026-03-31",
+      "source_date": "Q4 2025",
+      "next_update": "2026-06-30",
+      "unit": "GBP_per_kWh",
+      "notes": "Quarterly non-domestic UK benchmark including Climate Change Levy. Use for screening only; site tariff, supplier contract, or customer-supplied electricity rate overrides.",
+      "bands": {
+        "Very Small": 0.3611,
+        "Small": 0.2957,
+        "Small/Medium": 0.284,
+        "Medium": 0.2536,
+        "Large": 0.2356,
+        "Very Large": 0.2251,
+        "Extra Large": 0.2113,
+        "Average": 0.2399
+      }
+    }
+  },
+  "US": {
+    "currency": "$",
+    "currency_code": "USD",
+    "fuel_price": 1.3888,
+    "fuel_price_display": "$5.26/gal",
+    "bess_rates": {
+      "Ampd 200": 2300,
+      "Ampd 400": 3000
+    },
+    "gen_rates": {
+      "100": 625,
+      "200": 875,
+      "300": 1250,
+      "400": 1625,
+      "500": 2000,
+      "750": 2750,
+      "1000": 3750
+    },
+    "electricity_rate": 0.18,
+    "electricity_rate_display": "$0.18/kWh"
+  },
+  "CA": {
+    "currency": "C$",
+    "currency_code": "CAD",
+    "fuel_price": 1.7,
+    "fuel_price_display": "C$1.70/L screening placeholder",
+    "bess_rates": {
+      "Ampd 200": 3100,
+      "Ampd 400": 4050
+    },
+    "gen_rates": {
+      "100": 845,
+      "200": 1180,
+      "300": 1690,
+      "400": 2195,
+      "500": 2700,
+      "750": 3715,
+      "1000": 5065
+    },
+    "electricity_rate": 0.19,
+    "electricity_rate_display": "C$0.19/kWh screening placeholder",
+    "rate_notes": [
+      "Canada profile is enabled for regional routing, currency, wording, and early screening only.",
+      "Diesel, electricity, BESS hire, and generator hire rates are placeholders until Canadian partner/province/site rates are supplied.",
+      "Use province, utility tariff, site diesel, and local hire rate data whenever available."
+    ]
+  },
+  "AU": {
+    "currency": "$",
+    "currency_code": "AUD",
+    "fuel_price": 2.34,
+    "fuel_price_display": "A$2.34/L",
+    "bess_rates": {},
+    "gen_rates": {},
+    "electricity_rate": 0.3,
+    "electricity_rate_display": "A$0.30/kWh national screening midpoint",
+    "electricity_benchmarks": {
+      "source": "https://www.canstar.com.au/energy/electricity-costs-kwh/",
+      "source_name": "Canstar electricity cost per kWh guide",
+      "source_type": "third_party_consumer_market_benchmark",
+      "source_date": "2026-06-19",
+      "unit": "AUD_per_kWh",
+      "notes": "State/distributor residential-market benchmarks for screening only. Site tariff, retailer contract, project tariff, or customer-supplied rate overrides these values.",
+      "distributors": {
+        "NSW": {
+          "Ausgrid": 0.362,
+          "Endeavour Energy": 0.368,
+          "Essential Energy": 0.404
+        },
+        "VIC": {
+          "CitiPower": 0.26,
+          "Jemena": 0.282,
+          "Powercor": 0.286,
+          "AusNet Services": 0.33,
+          "United Energy": 0.275
+        },
+        "QLD": {
+          "Energex": 0.333
+        },
+        "SA": {
+          "SA Power Network": 0.437
+        },
+        "ACT": {
+          "EvoEnergy": 0.308
+        },
+        "TAS": {
+          "TasNetworks": 0.28
+        }
+      }
+    }
+  },
+  "_meta": {
+    "fuel_price_update": {
+      "checked_at": "2026-08-17T10:20:12.442744+00:00",
+      "max_change_pct_without_force": 15.0,
+      "events": [
+        {
+          "region": "UK",
+          "old": 1.7919,
+          "new": 1.2343,
+          "display": "£1.23/L",
+          "change_pct": -31.12,
+          "blocked": true,
+          "status": "blocked",
+          "source_date": "25/12/2017",
+          "source": "https://www.gov.uk/government/statistics/weekly-road-fuel-prices",
+          "third_party_benchmark": false
+        },
+        {
+          "region": "US",
+          "old": 1.4128,
+          "new": 1.3888,
+          "display": "$5.26/gal",
+          "change_pct": -1.7,
+          "blocked": false,
+          "status": "checked",
+          "source_date": "2026-08-10",
+          "source": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=pet&s=EMD_EPD2D_PTE_NUS_DPG&f=W",
+          "third_party_benchmark": false
+        },
+        {
+          "region": "AU",
+          "old": 2.31,
+          "new": 2.34,
+          "display": "A$2.34/L",
+          "change_pct": 1.3,
+          "blocked": false,
+          "status": "checked",
+          "source_date": "10-Aug-2026",
+          "source": "https://www.globalpetrolprices.com/Australia/diesel_prices/",
+          "third_party_benchmark": true
+        }
+      ]
+    },
+    "electricity_price_update": {
+      "checked_at": "2026-06-19T11:02:47Z",
+      "note": "Electricity is a screening/site-tariff assumption, not a true weekly commodity update. Use site tariff when supplied. UK default uses the latest DESNZ non-domestic average including Climate Change Levy (~24p/kWh); US default uses $0.18/kWh screening assumption until regional utility data is supplied; AU default uses A$0.30/kWh as a national screening midpoint with Canstar state/distributor consumer-market benchmarks available for context.",
+      "events": [
+        {
+          "region": "UK",
+          "value": 0.2399,
+          "display": "£0.24/kWh DESNZ non-domestic average incl CCL",
+          "source": "https://www.gov.uk/government/statistical-data-sets/gas-and-electricity-prices-in-the-non-domestic-sector",
+          "source_name": "DESNZ non-domestic electricity prices including Climate Change Levy",
+          "source_date": "Q4 2025",
+          "published_date": "2026-03-31",
+          "source_type": "official_government_non_domestic_benchmark",
+          "blocked": false
+        },
+        {
+          "region": "US",
+          "value": 0.18,
+          "display": "$0.18/kWh",
+          "source": "US commercial electricity screening assumption; use state/utility/site tariff where known",
+          "blocked": false
+        },
+        {
+          "region": "AU",
+          "value": 0.3,
+          "display": "A$0.30/kWh national screening midpoint",
+          "source": "https://www.canstar.com.au/energy/electricity-costs-kwh/",
+          "source_name": "Canstar electricity cost per kWh guide",
+          "source_date": "2026-06-19",
+          "source_type": "third_party_consumer_market_benchmark",
+          "blocked": false,
+          "message": "Use Canstar state/distributor values for screening context only. Site tariff, retailer contract, project tariff, or customer-supplied rate overrides."
+        }
+      ]
+    },
+    "region_notes": {
+      "UK": [
+        "UK diesel uses GOV.UK weekly road fuel prices.",
+        "UK electricity default uses the latest DESNZ non-domestic average including Climate Change Levy as a quarterly official benchmark.",
+        "For UK customer output, site electricity tariff, supplier contract, or customer-supplied rate overrides the benchmark."
+      ],
+      "AU": [
+        "AU diesel uses GlobalPetrolPrices as a third-party benchmark updater, not an official government rate. Site/partner diesel price overrides it.",
+        "AU electricity default is A$0.30/kWh as a national screening midpoint; Canstar state/distributor benchmarks are third-party consumer-market context, not site tariffs.",
+        "AU BESS and generator hire rates are intentionally empty until region-specific partner rates are supplied.",
+        "For AU customer output, ask for site diesel price, site electricity tariff, and local hire rates when missing."
+      ],
+      "CA": [
+        "Canada region routing is enabled for country/city/province mentions and [CA]/[CANADA] demo overrides.",
+        "Canada rates are screening placeholders in CAD until AMPD or partner Canadian commercial rates are supplied.",
+        "For Canada customer output, ask for province, site diesel price, electricity tariff, and local hire rates when missing."
+      ]
+    }
+  }
+}

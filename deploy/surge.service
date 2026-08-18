@@ -1,0 +1,22 @@
+[Unit]
+Description=AMPD Surge service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=surge
+Group=surge
+WorkingDirectory=/opt/surge/current
+EnvironmentFile=/etc/surge/surge.env
+ExecStart=/opt/surge/venv/bin/gunicorn --workers 2 --bind 127.0.0.1:8010 --access-logfile - --error-logfile - surge.surge_app:app
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/surge
+
+[Install]
+WantedBy=multi-user.target

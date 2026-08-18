@@ -1,0 +1,121 @@
+{
+  "_manufacturer": "Falcon Tower Cranes",
+  "_contact": "info@falcontowercranes.co.uk",
+  "_source": "Falcon Crane Hire Fleet Specs",
+  "_note": "Calculated based on manufacturer rated kVA or motor power.",
+  "_peak_kw_basis": "rated_kva x 0.66 (BS 7671 demand factor)",
+  "_util_rate": "10% (avg_kw = peak_kw x 0.10)",
+  "saddle_cranes": [
+    {
+      "model": "Jaso J110",
+      "peak_kw": 39.6,
+      "avg_kw": 4.0,
+      "rated_kva": 60,
+      "starting_current_a": 143,
+      "running_current_a": 86,
+      "min_gen_kva_raw": 120,
+      "gen_size_kva": 125,
+      "gen_fuel_lph": 10.0,
+      "start_method": "Freq Soft Start",
+      "_peak_basis": "rated_kva(60) x 0.66 (BS 7671 demand factor)"
+    },
+    {
+      "model": "Jaso J160",
+      "peak_kw": 49.5,
+      "avg_kw": 5.0,
+      "rated_kva": 75,
+      "starting_current_a": 179,
+      "running_current_a": 108,
+      "min_gen_kva_raw": 150,
+      "gen_size_kva": 150,
+      "gen_fuel_lph": 12.0,
+      "start_method": "Freq Soft Start",
+      "_peak_basis": "rated_kva(75) x 0.66 (BS 7671 demand factor)"
+    },
+    {
+      "model": "Jaso J208",
+      "peak_kw": 66.0,
+      "avg_kw": 6.6,
+      "rated_kva": 100,
+      "starting_current_a": 239,
+      "running_current_a": 144,
+      "min_gen_kva_raw": 200,
+      "gen_size_kva": 200,
+      "gen_fuel_lph": 16.0,
+      "start_method": "Freq Soft Start",
+      "_peak_basis": "rated_kva(100) x 0.66 (BS 7671 demand factor)"
+    },
+    {
+      "model": "Potain MDT 178",
+      "peak_kw": 39.6,
+      "avg_kw": 4.0,
+      "rated_kva": 60,
+      "starting_current_a": 143,
+      "running_current_a": 86,
+      "min_gen_kva_raw": 120,
+      "gen_size_kva": 125,
+      "gen_fuel_lph": 10.0,
+      "start_method": "Freq Soft Start",
+      "_peak_basis": "rated_kva(60) x 0.66 (BS 7671 demand factor)"
+    },
+    {
+      "model": "Potain MDT 219",
+      "peak_kw": 49.5,
+      "avg_kw": 5.0,
+      "rated_kva": 75,
+      "starting_current_a": 179,
+      "running_current_a": 108,
+      "min_gen_kva_raw": 150,
+      "gen_size_kva": 150,
+      "gen_fuel_lph": 12.0,
+      "start_method": "Freq Soft Start",
+      "_peak_basis": "rated_kva(75) x 0.66 (BS 7671 demand factor)"
+    }
+  ],
+  "luffing_cranes": [
+    {
+      "model": "Jaso J265PA",
+      "peak_kw": 165.1,
+      "avg_kw": 16.5,
+      "rated_kva": 250,
+      "starting_current_a": 356,
+      "running_current_a": 320,
+      "min_gen_kva_raw": 250,
+      "gen_size_kva": 250,
+      "gen_fuel_lph": 34.5,
+      "start_method": "Variable frequency drives",
+      "supply": "400V 50Hz",
+      "max_capacity_t": 18,
+      "max_jib_m": 60,
+      "capacity_at_jib_end_t": 2.0,
+      "motor_power_kw": {
+        "hoist_options": [65, 110],
+        "slew": "2 x 7.3",
+        "auxiliary_drive": "2 x 5.5",
+        "luffing": 44.1
+      },
+      "total_power_kw_options": [120.1, 165.1],
+      "_source": "Falcon Cranes 2023 brochure + Jaso J265PA EN14439/FEM1001 datasheets",
+      "_source_files": [
+        "exports/surge-datasheets/Jaso-J265PA-EN14439.pdf",
+        "exports/surge-datasheets/Jaso-J265PA-FEM1001.pdf"
+      ],
+      "_source_url": "https://www.falconcranes.co.uk/media/attachments/2023/09/11/1853---new-falcon-brochure-2023---final---email-version-compressed.pdf",
+      "_peak_basis": "Jaso datasheet total_power_kw_options top value; do not apply demand-factor or diversity reduction inside manufacturer data. Diversity belongs in the assessment narrative, not the canonical manufacturer record.",
+      "_current_basis": "starting/running current and fuel burn from AMPD Discord project spec posted 2026-07-20; not visible in public Jaso PDF"
+    },
+    {
+      "model": "Jaso J300",
+      "peak_kw": 99.0,
+      "avg_kw": 9.9,
+      "rated_kva": 150,
+      "starting_current_a": 359,
+      "running_current_a": 216,
+      "min_gen_kva_raw": 300,
+      "gen_size_kva": 300,
+      "gen_fuel_lph": 24.0,
+      "start_method": "Freq Soft Start",
+      "_peak_basis": "rated_kva(150) x 0.66 (BS 7671 demand factor)"
+    }
+  ]
+}

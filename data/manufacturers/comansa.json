@@ -1,0 +1,31 @@
+{
+  "_manufacturer": "Comansa",
+  "_contact": "",
+  "_source": "Comansa 16CM260-10t spec sheet CM-DS-201810-009 / vDS201810009, OCR/vision extraction from PDF supplied 2026-05-29",
+  "_note": "Manufacturer/spec-sheet data only. The spec page states required power of 110kVA with HFU2-37-25 hoist and 126kVA with HFU2-45-25 hoist at 400V 3ph 50Hz. Use 126kVA as the conservative electrical requirement for the 16CM260-10 unless the hoist variant is confirmed as HFU2-37-25. Recommend 150kVA prime-rated generator minimum; allow 200kVA where shared loads, long cable runs or site power quality are uncertain.",
+  "_peak_kw_basis": "rated_kva x 0.66 (BS 7671 demand factor)",
+  "_util_rate": "10% (avg_kw = peak_kw x 0.10)",
+  "saddle_cranes": [
+    {
+      "model": "16CM260-10",
+      "aliases": ["16 CM 260 10t", "16CM260/10t", "16 CM 260/10t"],
+      "peak_kw": 83.2,
+      "avg_kw": 8.3,
+      "rated_kva": 126,
+      "operating_voltage_v": 400,
+      "phase": "3ph",
+      "frequency_hz": 50,
+      "running_current_a": 182,
+      "starting_current_a": null,
+      "min_gen_kva_raw": 126,
+      "gen_size_kva": 150,
+      "recommended_gen_kva_with_margin": 200,
+      "gen_fuel_lph": 12.0,
+      "start_method": "VFD / frequency-controlled mechanisms per spec page",
+      "source_detail": "Spec page shows Required power: HFU2-37-25 = 110kVA, HFU2-45-25 = 126kVA; trolley TFU-7.5 = 7.5kW; slewing SFU-7.5 = 2x7.5kW; 400V 3ph 50Hz.",
+      "_peak_basis": "rated_kva(126) x 0.66 (BS 7671 demand factor)",
+      "_generator_guidance": "150kVA prime-rated generator minimum for crane-only feed; 200kVA if shared, long cable run, voltage-dip risk or uncertain site conditions."
+    }
+  ],
+  "luffing_cranes": []
+}

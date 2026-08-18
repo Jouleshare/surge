@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surge Analytics — Ampd Energy</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0f1e;
+      color: #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #0f172a;
+      border-bottom: 1px solid #1e293b;
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    header .logo { font-size: 22px; }
+    header h1 { font-size: 20px; font-weight: 700; color: #f1f5f9; }
+    header span { font-size: 13px; color: #64748b; margin-left: 8px; }
+
+    .generated {
+      font-size: 12px;
+      color: #475569;
+      margin-left: auto;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #475569;
+      margin-bottom: 16px;
+      margin-top: 32px;
+    }
+    .section-title:first-child { margin-top: 0; }
+
+    /* Stat Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 20px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+    }
+    .card .label {
+      font-size: 12px;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+    .card .value {
+      font-size: 36px;
+      font-weight: 800;
+      color: #38bdf8;
+      line-height: 1;
+    }
+    .card .sub {
+      font-size: 12px;
+      color: #475569;
+      margin-top: 6px;
+    }
+
+    /* Chart & Equipment row */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 720px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .panel h3 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+    }
+
+    /* Equipment bar chart */
+    .equip-bar {
+      margin-bottom: 14px;
+    }
+    .equip-bar .name {
+      font-size: 13px;
+      color: #cbd5e1;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .equip-bar .name span { color: #38bdf8; font-weight: 700; }
+    .equip-bar .track {
+      background: #1e293b;
+      border-radius: 4px;
+      height: 8px;
+      overflow: hidden;
+    }
+    .equip-bar .fill {
+      height: 100%;
+      background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    /* Split pill */
+    .split-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .split-pill {
+      flex: 1;
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 16px 20px;
+      text-align: center;
+    }
+    .split-pill .flag { font-size: 28px; margin-bottom: 4px; }
+    .split-pill .pct { font-size: 26px; font-weight: 800; color: #38bdf8; }
+    .split-pill .count { font-size: 12px; color: #64748b; }
+
+    canvas { width: 100% !important; }
+
+    footer {
+      text-align: center;
+      padding: 32px 16px;
+      color: #334155;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <span class="logo">⚡</span>
+  <h1>Surge Analytics</h1>
+  <span>Ampd Energy</span>
+  <span class="generated">Generated {{ generated_at }}</span>
+</header>
+
+<main>
+  <!-- Key metrics -->
+  <p class="section-title">Overview</p>
+  <div class="cards">
+    <div class="card">
+      <div class="label">Total Conversations</div>
+      <div class="value">{{ stats.total_conversations }}</div>
+      <div class="sub">Unique numbers</div>
+    </div>
+    <div class="card">
+      <div class="label">Total Messages</div>
+      <div class="value">{{ stats.total_messages }}</div>
+      <div class="sub">{{ stats.inbound }} in / {{ stats.outbound }} out</div>
+    </div>
+    <div class="card">
+      <div class="label">Avg Messages</div>
+      <div class="value">{{ stats.avg_messages }}</div>
+      <div class="sub">Per conversation</div>
+    </div>
+    <div class="card">
+      <div class="label">Lead Capture Rate</div>
+      <div class="value">{{ stats.lead_rate }}%</div>
+      <div class="sub">{{ stats.leads }} of {{ stats.total_conversations }} convos</div>
+    </div>
+  </div>
+
+  <!-- UK / US split -->
+  <p class="section-title">Regional Split</p>
+  <div class="split-row">
+    <div class="split-pill">
+      <div class="flag">🇬🇧</div>
+      <div class="pct">{{ stats.uk_pct }}%</div>
+      <div class="count">{{ stats.uk_count }} UK numbers</div>
+    </div>
+    <div class="split-pill">
+      <div class="flag">🇺🇸</div>
+      <div class="pct">{{ stats.us_pct }}%</div>
+      <div class="count">{{ stats.us_count }} US numbers</div>
+    </div>
+    <div class="split-pill" style="flex:0.5;">
+      <div class="flag">🌐</div>
+      <div class="pct">{{ stats.other_count }}</div>
+      <div class="count">Other</div>
+    </div>
+  </div>
+
+  <!-- Chart + Equipment -->
+  <p class="section-title">Activity</p>
+  <div class="two-col">
+    <div class="panel">
+      <h3>Conversation Volume — Last 14 Days</h3>
+      <canvas id="volumeChart" height="220"></canvas>
+    </div>
+    <div class="panel">
+      <h3>Top Equipment Mentioned</h3>
+      {% if stats.top_equipment %}
+        {% set max_count = stats.top_equipment[0][1] %}
+        {% for name, count in stats.top_equipment %}
+        <div class="equip-bar">
+          <div class="name">{{ name }} <span>{{ count }}</span></div>
+          <div class="track">
+            <div class="fill" style="width: {{ (count / max_count * 100)|int }}%"></div>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <p style="color:#475569;font-size:13px;">No equipment data yet.</p>
+      {% endif %}
+    </div>
+  </div>
+</main>
+
+<footer>Surge by Ampd Energy ⚡ — stats refresh on each page load</footer>
+
+<script>
+  const labels = {{ volume_labels | tojson }};
+  const counts = {{ volume_counts | tojson }};
+
+  const ctx = document.getElementById('volumeChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Conversations',
+        data: counts,
+        backgroundColor: 'rgba(56, 189, 248, 0.25)',
+        borderColor: '#38bdf8',
+        borderWidth: 1.5,
+        borderRadius: 4,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#0f172a',
+          titleColor: '#94a3b8',
+          bodyColor: '#f1f5f9',
+          borderColor: '#1e293b',
+          borderWidth: 1,
+        }
+      },
+      scales: {
+        x: {
+          ticks: { color: '#475569', font: { size: 11 } },
+          grid: { color: '#1e293b' },
+        },
+        y: {
+          beginAtZero: true,
+          ticks: { color: '#475569', stepSize: 1 },
+          grid: { color: '#1e293b' },
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

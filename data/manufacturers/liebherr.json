@@ -1,0 +1,90 @@
+{
+  "_manufacturer": "Liebherr",
+  "_contact": "towercranes@liebherr.com",
+  "_source": "Liebherr Tower Cranes technical datasheets",
+  "_note": "Calculated based on manufacturer rated kVA or motor power.",
+  "_peak_kw_basis": "rated_kva x 0.66 (BS 7671 demand factor)",
+  "_util_rate": "10% (avg_kw = peak_kw x 0.10)",
+  "saddle_cranes": [
+    {
+      "model": "81K",
+      "peak_kw": 38.3,
+      "avg_kw": 3.8,
+      "rated_kva": 58,
+      "starting_current_a": 139,
+      "running_current_a": 84,
+      "min_gen_kva_raw": 116,
+      "gen_size_kva": 125,
+      "gen_fuel_lph": 10.0,
+      "start_method": "Freq Soft Start",
+      "_peak_basis": "rated_kva(58) x 0.66 (BS 7671 demand factor)"
+    },
+    {
+      "model": "110 EC-B",
+      "peak_kw": 49.5,
+      "avg_kw": 5.0,
+      "rated_kva": 75,
+      "starting_current_a": 179,
+      "running_current_a": 108,
+      "min_gen_kva_raw": 150,
+      "gen_size_kva": 150,
+      "gen_fuel_lph": 12.0,
+      "start_method": "Freq Soft Start",
+      "_peak_basis": "rated_kva(75) x 0.66 (BS 7671 demand factor)"
+    },
+    {
+      "model": "150 EC-B",
+      "peak_kw": 62.7,
+      "avg_kw": 6.3,
+      "rated_kva": 95,
+      "starting_current_a": 227,
+      "running_current_a": 137,
+      "min_gen_kva_raw": 190,
+      "gen_size_kva": 200,
+      "gen_fuel_lph": 16.0,
+      "start_method": "Freq Soft Start",
+      "_peak_basis": "rated_kva(95) x 0.66 (BS 7671 demand factor)"
+    },
+    {
+      "model": "200 EC-H",
+      "peak_kw": 72.6,
+      "avg_kw": 7.3,
+      "rated_kva": 110,
+      "starting_current_a": 262,
+      "running_current_a": 158,
+      "min_gen_kva_raw": 220,
+      "gen_size_kva": 250,
+      "gen_fuel_lph": 20.0,
+      "start_method": "Freq Soft Start",
+      "_peak_basis": "rated_kva(110) x 0.66 (BS 7671 demand factor)"
+    },
+    {
+      "model": "280 EC-H",
+      "peak_kw": 99.0,
+      "avg_kw": 9.9,
+      "rated_kva": 150,
+      "starting_current_a": 359,
+      "running_current_a": 216,
+      "min_gen_kva_raw": 300,
+      "gen_size_kva": 300,
+      "gen_fuel_lph": 24.0,
+      "start_method": "Freq Soft Start",
+      "_peak_basis": "rated_kva(150) x 0.66 (BS 7671 demand factor)"
+    }
+  ],
+  "luffing_cranes": [
+    {
+      "model": "357 HC-L",
+      "peak_kw": 118.8,
+      "avg_kw": 11.9,
+      "rated_kva": 180,
+      "starting_current_a": 430,
+      "running_current_a": 259,
+      "min_gen_kva_raw": 360,
+      "gen_size_kva": 400,
+      "gen_fuel_lph": 32.0,
+      "start_method": "Freq Soft Start",
+      "_peak_basis": "rated_kva(180) x 0.66 (BS 7671 demand factor)"
+    }
+  ]
+}
