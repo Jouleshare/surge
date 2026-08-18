@@ -50,7 +50,8 @@ The result is an indicative screening conversation, not a quotation or electrica
 - `data/manufacturers/`: copied manufacturer/model reference data for local matching and artifact generation.
 - `surge/surge_rates.json`: regional commercial screening rates and source metadata.
 - `/var/lib/surge/`: runtime leads, conversations, jobs and artifacts. These are operational records and must not be committed.
-- Loadout and Deploy APIs remain separate services; Brand/AMPD must provide network access and any required future authentication.
+- The repository includes `loadout_local/`, a small local Loadout-compatible calculation API backed by the bundled approved data. It runs on loopback port 8020 and is the default calculation route for Surge.
+- Deploy remains an optional external manufacturer API; Surge has bundled manufacturer fallback data if it is unavailable.
 
 ## Human controls
 

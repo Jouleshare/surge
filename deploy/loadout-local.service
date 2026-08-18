@@ -1,9 +1,7 @@
 [Unit]
-Description=AMPD Surge service
+Description=AMPD local Loadout calculation API
 After=network-online.target
 Wants=network-online.target
-Requires=loadout-local.service
-After=loadout-local.service
 
 [Service]
 Type=simple
@@ -11,14 +9,13 @@ User=surge
 Group=surge
 WorkingDirectory=/opt/surge/current
 EnvironmentFile=/etc/surge/surge.env
-ExecStart=/opt/surge/venv/bin/gunicorn --workers 2 --bind 127.0.0.1:8010 --access-logfile - --error-logfile - surge.surge_app:app
+ExecStart=/opt/surge/venv/bin/gunicorn --workers 2 --bind 127.0.0.1:8020 --access-logfile - --error-logfile - loadout_local.app:app
 Restart=on-failure
 RestartSec=5
 NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=strict
 ProtectHome=true
-ReadWritePaths=/var/lib/surge
 
 [Install]
 WantedBy=multi-user.target

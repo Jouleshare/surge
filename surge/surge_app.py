@@ -18,7 +18,7 @@ META_ACCESS_TOKEN     = os.environ.get("META_ACCESS_TOKEN", "")
 META_VERIFY_TOKEN     = os.environ.get("META_VERIFY_TOKEN", "")
 
 # Single source of truth — all rates & specs live in Loadout
-LOADOUT_API = "https://loadout.getjoule.co.uk/api/calculate"
+LOADOUT_API = os.environ.get("LOADOUT_API", "http://127.0.0.1:8020/api/calculate")
 
 # ── Regional config ───────────────────────────────────────────────────────────
 # Rates loaded from surge_rates.json (edit that file to update prices, not this code)

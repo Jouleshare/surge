@@ -1,0 +1,48 @@
+{
+  "_comment": "Edit this file to change equipment specs. Backend loads this on startup.",
+  "_demand_factors": "peak_kw = gen_kva × demand_factor (used for non-exact-match kVA sizes)",
+  "_demand_factor_basis": "Tower Crane 0.28 derived from Wolffkran real data (rated_kva x 0.8 PF x 0.75 motor diversity ÷ gen_kva). Generator is 3-4x oversized vs running demand due to starting surge requirements.",
+  "_util_rates": "avg_kw = peak_kw × util_rate",
+
+  "demand_factors": {
+    "Tower Crane": 0.28,
+    "Crane":       0.28,
+    "Hoist":       0.80
+  },
+
+  "util_rates": {
+    "Tower Crane": 0.10,
+    "Crane":       0.10,
+    "Hoist":       0.30
+  },
+
+  "equipment_specs": {
+    "_comment": "gen_size_kva is reference only (cost/savings). peak_kw drives load calcs.",
+    "_tower_crane_basis": "Peak kW aligned to Wolffkran real data: rated_kva x 0.8 (PF) x 0.75 (motor diversity). Generic variants match nearest Wolffkran equivalent by generator size.",
+
+    "Tower Crane (Small)":      { "peak_kw": 28,   "avg_kw": 2.8,  "gen_size_kva": 100, "gen_fuel_lph": 8.0,  "_equiv": "Scaled from Wolffkran WK6017 (125kVA gen, 34.8kW peak)" },
+    "Tower Crane (Medium)":     { "peak_kw": 56,   "avg_kw": 5.6,  "gen_size_kva": 200, "gen_fuel_lph": 14.0, "_equiv": "Avg of Wolffkran 200kVA gen cranes (WK6031/6522/6531/7032/7532/7534, ~55-58kW)" },
+    "Tower Crane (Large)":      { "peak_kw": 80,   "avg_kw": 8.0,  "gen_size_kva": 300, "gen_fuel_lph": 22.0, "_equiv": "Wolffkran WK275B (300kVA gen, 80.4kW peak)" },
+
+    "Passenger Hoist (Small)":  { "peak_kw": 48,   "avg_kw": 14.4, "gen_size_kva": 60,  "gen_fuel_lph": 6.0  },
+    "Passenger Hoist (Large)":  { "peak_kw": 128,  "avg_kw": 38.4, "gen_size_kva": 160, "gen_fuel_lph": 10.0 },
+
+    "Mast Climber":             { "peak_kw": 11,   "avg_kw": 0.6,  "gen_size_kva": 20,  "gen_fuel_lph": 2.0  },
+
+    "Site Temps (Small)":       { "peak_kw": 16,   "avg_kw": 6.4,  "gen_size_kva": 20,  "gen_fuel_lph": 2.5  },
+    "Site Temps (Medium)":      { "peak_kw": 36,   "avg_kw": 14.4, "gen_size_kva": 45,  "gen_fuel_lph": 5.0  },
+    "Site Temps (Large)":       { "peak_kw": 80,   "avg_kw": 32.0, "gen_size_kva": 100, "gen_fuel_lph": 10.0 },
+
+    "EV Car Charger":           { "peak_kw": 7,    "avg_kw": 7.0,  "gen_size_kva": 20,  "gen_fuel_lph": 2.0  }
+  },
+
+  "util_by_type": {
+    "_comment": "Displayed in Quick Calc UI panel (must match demand factors above)",
+    "Tower Crane":     10,
+    "Passenger Hoist": 30,
+    "Mast Climber":     5,
+    "Site Temps":      40,
+    "Welfare":         60,
+    "EV Car Charger": 100
+  }
+}
